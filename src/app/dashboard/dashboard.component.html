@@ -1,0 +1,13 @@
+<div class="container mt-2">
+  <div class="input-group">
+    <input type="text" class="form-control" [ngModel]="searchText" placeholder="Search items" #searchBox
+      (ngModelChange)="searchText = searchBox.value">
+    <button type="button" class="btn btn-primary" (click)="addItem()">Primary</button>
+
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of items | search:searchText">
+      {{ item }}
+    </li>
+  </ul>
+</div>
