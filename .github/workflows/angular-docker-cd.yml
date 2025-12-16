@@ -1,0 +1,18 @@
+name: Docker CD without Server
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  docker-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t angular-app .
+
+      - name: Run Docker container
+        run: docker run -d -p 8080:80 angular-app
